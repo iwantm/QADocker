@@ -4,7 +4,7 @@ FROM python:3.7
 # Copy contents into image
 COPY . .
 # run pip dependencies
-RUN pip3 install flask flask-sqlalchemy PyMySQL cryptography
+RUN pip3 install flask flask-sqlalchemy PyMySQL
 # Expose correct port
 EXPOSE 5000
 # Create an entrypoint
