@@ -1,8 +1,7 @@
 version: '3.7'
 services:
   flask-app:
-    build: ./flask-app
-    image: trio-task_flask-app:latest
+    image: iwantm/trio_flask_app:latest
     deploy:
       replicas: 3
     environment:
@@ -12,8 +11,7 @@ services:
       published: 5000
       protocol: tcp
   mysql:
-    build: ./db
-    image: trio-task_mysql
+    image: iwantm/trio_flask_app:db
     environment:
       MYSQL_ROOT_PASSWORD: pass
     ports:
