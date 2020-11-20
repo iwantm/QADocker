@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  flask-app:
+    build: ./flask-app
+    image: trio-task_flask-app:latest
+    deploy:
+      replicas: 3
+    environment:
+      DB_PASS: pass
+    ports:
+    - target: 5000
+      published: 5000
+      protocol: tcp
+  mysql:
+    build: ./db
+    image: trio-task_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    ports:
+    - target: 3306
+      published: 3306
+  nginx:
+    image: nginx:latest
+    ports:
+    - target: 80
+      published: 80
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
