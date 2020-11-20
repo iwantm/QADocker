@@ -17,6 +17,10 @@ services:
     ports:
     - target: 3306
       published: 3306
+    volumes:
+    - type: volume
+      source: db
+      target: /var/lib/mysql
   nginx:
     image: nginx:latest
     ports:
@@ -26,3 +30,5 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
+volumes:
+  db:
